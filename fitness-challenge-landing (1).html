@@ -1,0 +1,918 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diet Starts Monday Challenge - SORS Studio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Outfit:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-pink: #C8016C;
+            --secondary-pink: #E91E8C;
+            --light-pink: #FFB3D9;
+            --pale-pink: #FFE5F3;
+            --dark: #1A1A1A;
+            --white: #FFFFFF;
+            --yellow: #FFD700;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Outfit', sans-serif;
+            background: var(--primary-pink);
+            color: var(--white);
+            overflow-x: hidden;
+        }
+
+        /* Hero Section */
+        .hero {
+            position: relative;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 60px 20px;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(circle at 20% 30%, rgba(233, 30, 140, 0.4) 0%, transparent 50%),
+                radial-gradient(circle at 80% 70%, rgba(255, 179, 217, 0.3) 0%, transparent 50%);
+            z-index: 0;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 1400px;
+            width: 100%;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .hero-text {
+            animation: slideInLeft 1s ease-out;
+        }
+
+        @keyframes slideInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .badge {
+            display: inline-block;
+            background: var(--white);
+            color: var(--primary-pink);
+            padding: 8px 20px;
+            border-radius: 30px;
+            font-size: 14px;
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+            animation: fadeIn 0.8s ease-out 0.2s both;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        h1 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: clamp(3rem, 8vw, 7rem);
+            line-height: 0.9;
+            margin-bottom: 20px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            animation: fadeIn 0.8s ease-out 0.4s both;
+        }
+
+        .highlight {
+            color: var(--light-pink);
+            display: block;
+        }
+
+        .tagline {
+            font-size: clamp(1.2rem, 3vw, 1.8rem);
+            font-weight: 300;
+            margin-bottom: 15px;
+            opacity: 0.95;
+            animation: fadeIn 0.8s ease-out 0.6s both;
+        }
+
+        .hero-description {
+            font-size: 18px;
+            line-height: 1.6;
+            margin-bottom: 30px;
+            opacity: 0.9;
+            animation: fadeIn 0.8s ease-out 0.8s both;
+        }
+
+        .challenge-details {
+            display: flex;
+            gap: 30px;
+            margin-bottom: 40px;
+            flex-wrap: wrap;
+            animation: fadeIn 0.8s ease-out 1s both;
+        }
+
+        .detail-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .detail-icon {
+            width: 50px;
+            height: 50px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            backdrop-filter: blur(10px);
+        }
+
+        .detail-text {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .detail-label {
+            font-size: 12px;
+            opacity: 0.8;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .detail-value {
+            font-size: 18px;
+            font-weight: 700;
+        }
+
+        /* Sign Up Form */
+        .signup-card {
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(20px);
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            border-radius: 30px;
+            padding: 50px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            animation: slideInRight 1s ease-out;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .signup-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
+            animation: rotate 20s linear infinite;
+        }
+
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        @keyframes slideInRight {
+            from {
+                opacity: 0;
+                transform: translateX(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .signup-card-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .form-title {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 3rem;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .form-subtitle {
+            font-size: 16px;
+            opacity: 0.9;
+            margin-bottom: 30px;
+        }
+
+        .prize-banner {
+            background: var(--yellow);
+            color: var(--dark);
+            padding: 20px;
+            border-radius: 15px;
+            text-align: center;
+            margin-bottom: 25px;
+            font-weight: 700;
+            font-size: 18px;
+            box-shadow: 0 10px 30px rgba(255, 215, 0, 0.3);
+        }
+
+        .prize-amount {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 3rem;
+            display: block;
+            letter-spacing: 2px;
+        }
+
+        .prizes-list {
+            background: rgba(255, 255, 255, 0.1);
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            border-radius: 15px;
+            padding: 25px;
+            margin-bottom: 30px;
+        }
+
+        .prize-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .prize-item:last-of-type {
+            border-bottom: none;
+        }
+
+        .prize-place {
+            font-weight: 700;
+            font-size: 16px;
+        }
+
+        .prize-reward {
+            font-weight: 600;
+            font-size: 15px;
+            text-align: right;
+        }
+
+        .bonus-prize {
+            background: linear-gradient(135deg, var(--secondary-pink), var(--primary-pink));
+            padding: 15px;
+            border-radius: 10px;
+            margin-top: 15px;
+            font-size: 14px;
+            font-weight: 600;
+            text-align: center;
+            line-height: 1.5;
+        }
+
+        .input-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 8px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        input {
+            width: 100%;
+            padding: 18px 24px;
+            border: 2px solid rgba(255, 255, 255, 0.4);
+            border-radius: 15px;
+            font-size: 16px;
+            background: rgba(255, 255, 255, 0.95);
+            color: var(--dark);
+            font-family: 'Outfit', sans-serif;
+            transition: all 0.3s ease;
+        }
+
+        input:focus {
+            outline: none;
+            border-color: var(--white);
+            background: var(--white);
+            box-shadow: 0 0 0 4px rgba(255, 255, 255, 0.2);
+            transform: translateY(-2px);
+        }
+
+        input::placeholder {
+            color: #999;
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 20px;
+            background: var(--white);
+            color: var(--primary-pink);
+            border: none;
+            border-radius: 15px;
+            font-size: 18px;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 1.8rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+            background: var(--yellow);
+        }
+
+        .submit-btn:active {
+            transform: translateY(-2px);
+        }
+
+        /* Klaviyo Form Styling */
+        .klaviyo-form-VEmkQr {
+            margin-bottom: 20px;
+        }
+
+        /* Override Klaviyo default styles to match our design */
+        .klaviyo-form-VEmkQr input[type="text"],
+        .klaviyo-form-VEmkQr input[type="email"] {
+            width: 100%;
+            padding: 18px 24px !important;
+            border: 2px solid rgba(255, 255, 255, 0.4) !important;
+            border-radius: 15px !important;
+            font-size: 16px !important;
+            background: rgba(255, 255, 255, 0.95) !important;
+            color: var(--dark) !important;
+            font-family: 'Outfit', sans-serif !important;
+            margin-bottom: 15px !important;
+        }
+
+        .klaviyo-form-VEmkQr input[type="text"]:focus,
+        .klaviyo-form-VEmkQr input[type="email"]:focus {
+            outline: none !important;
+            border-color: var(--white) !important;
+            background: var(--white) !important;
+            box-shadow: 0 0 0 4px rgba(255, 255, 255, 0.2) !important;
+        }
+
+        .klaviyo-form-VEmkQr button[type="submit"],
+        .klaviyo-form-VEmkQr .klaviyo-submit-button {
+            width: 100% !important;
+            padding: 20px !important;
+            background: var(--white) !important;
+            color: var(--primary-pink) !important;
+            border: none !important;
+            border-radius: 15px !important;
+            font-size: 1.8rem !important;
+            font-weight: 800 !important;
+            text-transform: uppercase !important;
+            letter-spacing: 2px !important;
+            cursor: pointer !important;
+            transition: all 0.3s ease !important;
+            font-family: 'Bebas Neue', sans-serif !important;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2) !important;
+        }
+
+        .klaviyo-form-VEmkQr button[type="submit"]:hover,
+        .klaviyo-form-VEmkQr .klaviyo-submit-button:hover {
+            transform: translateY(-4px) !important;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3) !important;
+            background: var(--yellow) !important;
+        }
+
+        .klaviyo-form-VEmkQr label {
+            display: block !important;
+            font-size: 14px !important;
+            font-weight: 600 !important;
+            margin-bottom: 8px !important;
+            text-transform: uppercase !important;
+            letter-spacing: 1px !important;
+            color: var(--white) !important;
+        }
+
+        /* Info Section */
+        .info-section {
+            padding: 100px 20px;
+            background: var(--dark);
+            position: relative;
+        }
+
+        .info-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: clamp(2.5rem, 6vw, 4rem);
+            text-align: center;
+            margin-bottom: 60px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            margin-bottom: 80px;
+        }
+
+        .info-card {
+            background: linear-gradient(135deg, var(--primary-pink) 0%, var(--secondary-pink) 100%);
+            padding: 40px;
+            border-radius: 20px;
+            transition: transform 0.3s ease;
+        }
+
+        .info-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .info-icon {
+            font-size: 3rem;
+            margin-bottom: 20px;
+        }
+
+        .info-card h3 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 2rem;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .info-card p {
+            font-size: 16px;
+            line-height: 1.6;
+            opacity: 0.95;
+        }
+
+        .info-card ul {
+            list-style: none;
+            padding: 0;
+            margin-top: 15px;
+        }
+
+        .info-card li {
+            padding: 8px 0;
+            padding-left: 25px;
+            position: relative;
+        }
+
+        .info-card li::before {
+            content: '→';
+            position: absolute;
+            left: 0;
+            font-weight: 700;
+            color: var(--light-pink);
+        }
+
+        /* How to Join Section */
+        .steps-section {
+            padding: 100px 20px;
+            background: var(--secondary-pink);
+        }
+
+        .steps-container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .steps-grid {
+            display: grid;
+            gap: 30px;
+        }
+
+        .step-item {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            padding: 30px;
+            border-radius: 20px;
+            display: flex;
+            gap: 25px;
+            align-items: start;
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .step-item:hover {
+            background: rgba(255, 255, 255, 0.15);
+            transform: translateX(10px);
+        }
+
+        .step-number {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 4rem;
+            color: var(--white);
+            line-height: 1;
+            flex-shrink: 0;
+        }
+
+        .step-content h3 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 1.8rem;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .step-content p {
+            font-size: 16px;
+            opacity: 0.95;
+            line-height: 1.6;
+        }
+
+        /* Footer CTA */
+        .footer-cta {
+            background: var(--primary-pink);
+            padding: 80px 20px;
+            text-align: center;
+        }
+
+        .footer-cta h2 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: clamp(2rem, 5vw, 4rem);
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .footer-cta p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            opacity: 0.95;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 20px 50px;
+            background: var(--white);
+            color: var(--primary-pink);
+            text-decoration: none;
+            border-radius: 15px;
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 2rem;
+            letter-spacing: 2px;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .cta-button:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+            background: var(--yellow);
+        }
+
+        /* Responsive */
+        @media (max-width: 968px) {
+            .hero-content {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            .signup-card {
+                padding: 35px;
+            }
+
+            .challenge-details {
+                gap: 20px;
+            }
+
+            h1 {
+                font-size: 3.5rem;
+            }
+        }
+
+        @media (max-width: 640px) {
+            .hero {
+                padding: 40px 15px;
+            }
+
+            .signup-card {
+                padding: 25px;
+            }
+
+            .form-title {
+                font-size: 2rem;
+            }
+
+            .prize-amount {
+                font-size: 2.5rem;
+            }
+
+            .prizes-list {
+                padding: 20px;
+            }
+
+            .prize-item {
+                flex-direction: column;
+                gap: 5px;
+                padding: 12px 0;
+                text-align: center;
+            }
+
+            .prize-reward {
+                text-align: center;
+                font-size: 14px;
+            }
+
+            .bonus-prize {
+                font-size: 13px;
+                padding: 12px;
+            }
+
+            .detail-item {
+                width: 100%;
+            }
+
+            .info-section, .steps-section {
+                padding: 60px 20px;
+            }
+
+            .step-item {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+
+        /* Success Message */
+        .success-message {
+            display: none;
+            background: var(--yellow);
+            color: var(--dark);
+            padding: 20px;
+            border-radius: 15px;
+            text-align: center;
+            font-weight: 700;
+            margin-top: 20px;
+        }
+
+        .success-message.show {
+            display: block;
+            animation: fadeIn 0.5s ease-out;
+        }
+    </style>
+</head>
+<body>
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <div class="hero-text">
+                <div class="badge">Women's History Month</div>
+                <h1>
+                    Diet Starts
+                    <span class="highlight">Monday</span>
+                </h1>
+                <p class="tagline">4-Week Lifestyle Reset Challenge</p>
+                <p class="hero-description">
+                    Strip away stressors and reclaim your strongest self. This isn't about doing more—it's about doing less of what keeps you stuck.
+                </p>
+                
+                <div class="challenge-details">
+                    <div class="detail-item">
+                        <div class="detail-icon">📅</div>
+                        <div class="detail-text">
+                            <span class="detail-label">Starts</span>
+                            <span class="detail-value">Feb 23, 2026</span>
+                        </div>
+                    </div>
+                    <div class="detail-item">
+                        <div class="detail-icon">💪</div>
+                        <div class="detail-text">
+                            <span class="detail-label">Commitment</span>
+                            <span class="detail-value">3x Per Week</span>
+                        </div>
+                    </div>
+                    <div class="detail-item">
+                        <div class="detail-icon">⏱️</div>
+                        <div class="detail-text">
+                            <span class="detail-label">Duration</span>
+                            <span class="detail-value">4 Weeks</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Sign Up Form -->
+            <div class="signup-card">
+                <div class="signup-card-content">
+                    <h2 class="form-title">Join the Challenge</h2>
+                    <p class="form-subtitle">Sign up now to receive weekly updates and challenge materials</p>
+                    
+                    <div class="prize-banner">
+                        🏆 Top 3 Winners
+                        <span class="prize-amount">$150+</span>
+                    </div>
+                    
+                    <div class="prizes-list">
+                        <div class="prize-item">
+                            <span class="prize-place">🥇 1st Place</span>
+                            <span class="prize-reward">$150 Cash Prize</span>
+                        </div>
+                        <div class="prize-item">
+                            <span class="prize-place">🥈 2nd Place</span>
+                            <span class="prize-reward">48 Classpass Credits</span>
+                        </div>
+                        <div class="prize-item">
+                            <span class="prize-place">🥉 3rd Place</span>
+                            <span class="prize-reward">SORS Pilates/Women's Event Ticket</span>
+                        </div>
+                        <div class="bonus-prize">
+                            ✨ PLUS: All top 3 winners get a free workout set from the new SORS collection!
+                        </div>
+                    </div>
+
+                    <!-- Klaviyo Embedded Form -->
+                    <div class="klaviyo-form-VEmkQr"></div>
+                    
+                    <div id="successMessage" class="success-message">
+                        🎉 You're in! Check your email for next steps.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Info Section -->
+    <section class="info-section">
+        <div class="info-container">
+            <h2 class="section-title">What's Included</h2>
+            
+            <div class="info-grid">
+                <div class="info-card">
+                    <div class="info-icon">🎯</div>
+                    <h3>The Focus</h3>
+                    <p>Consistency over everything. Smart training and intentional nutrition.</p>
+                    <ul>
+                        <li>No alcohol</li>
+                        <li>No ultra-processed foods</li>
+                        <li>No refined sugar</li>
+                        <li>Stress-free approach</li>
+                    </ul>
+                </div>
+
+                <div class="info-card">
+                    <div class="info-icon">💪</div>
+                    <h3>Efficient Training</h3>
+                    <p>20-30 minute sessions designed for busy lifestyles</p>
+                    <ul>
+                        <li>Dumbbell strength</li>
+                        <li>Barre & Pilates</li>
+                        <li>HIIT cardio</li>
+                        <li>Home or gym options</li>
+                    </ul>
+                </div>
+
+                <div class="info-card">
+                    <div class="info-icon">📱</div>
+                    <h3>App Features</h3>
+                    <p>Everything you need in one place</p>
+                    <ul>
+                        <li>Video-guided workouts</li>
+                        <li>Smart scheduling</li>
+                        <li>"Snack Smart Sis" tracker</li>
+                        <li>Private community</li>
+                    </ul>
+                </div>
+
+                <div class="info-card">
+                    <div class="info-icon">🏆</div>
+                    <h3>Prize Categories</h3>
+                    <p>Three ways to win</p>
+                    <ul>
+                        <li>Most Consistent & Active</li>
+                        <li>Overall Transformation</li>
+                        <li>Fat Loss Transformation</li>
+                    </ul>
+                </div>
+
+                <div class="info-card">
+                    <div class="info-icon">🛠️</div>
+                    <h3>Equipment Needed</h3>
+                    <p>Basic home gym essentials</p>
+                    <ul>
+                        <li>Yoga block & Pilates ball</li>
+                        <li>Resistance bands</li>
+                        <li>3 pairs of dumbbells</li>
+                        <li>Optional: bench, ankle weights</li>
+                    </ul>
+                </div>
+
+                <div class="info-card">
+                    <div class="info-icon">👯</div>
+                    <h3>Community Support</h3>
+                    <p>You're never alone in this journey</p>
+                    <ul>
+                        <li>Find accountability buddies</li>
+                        <li>Share your progress</li>
+                        <li>Daily engagement required</li>
+                        <li>Global participants</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How to Join Section -->
+    <section class="steps-section">
+        <div class="steps-container">
+            <h2 class="section-title">How to Join</h2>
+            
+            <div class="steps-grid">
+                <div class="step-item">
+                    <div class="step-number">1</div>
+                    <div class="step-content">
+                        <h3>Sign Up</h3>
+                        <p>Fill out the form above to register and be added to our participant list for weekly email updates and challenge materials.</p>
+                    </div>
+                </div>
+
+                <div class="step-item">
+                    <div class="step-number">2</div>
+                    <div class="step-content">
+                        <h3>Download the App</h3>
+                        <p>Get the SORS Studio app on iPhone or Android. Available on the App Store and Google Play.</p>
+                    </div>
+                </div>
+
+                <div class="step-item">
+                    <div class="step-number">3</div>
+                    <div class="step-content">
+                        <h3>Click "Join Challenge"</h3>
+                        <p>Inside the SORS Studio app, click the "Join Challenge" button to officially track your progress and access all materials.</p>
+                    </div>
+                </div>
+
+                <div class="step-item">
+                    <div class="step-number">4</div>
+                    <div class="step-content">
+                        <h3>Get Social & Active</h3>
+                        <p>Attend at least one fitness class outside the app (Yoga, Cycling, Dance, etc.) and share your journey on social media!</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer CTA -->
+    <section class="footer-cta">
+        <h2>Ready to Transform?</h2>
+        <p>Let's bring back the energized, confident woman already inside you.</p>
+        <a href="#" class="cta-button" onclick="scrollToTop(event)">Join the Challenge</a>
+        <p style="margin-top: 40px; font-size: 0.9rem; opacity: 0.8;">
+            Get started at <strong>SORS.STUDIO</strong>
+        </p>
+    </section>
+
+    <script>
+        function scrollToTop(event) {
+            event.preventDefault();
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // Parallax effect on scroll
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            const hero = document.querySelector('.hero');
+            if (hero) {
+                hero.style.transform = `translateY(${scrolled * 0.5}px)`;
+            }
+        });
+    </script>
+    
+    <!-- Klaviyo Form Script -->
+    <script async type="text/javascript" src="https://static.klaviyo.com/onsite/js/klaviyo.js?company_id=YOUR_COMPANY_ID"></script>
+</body>
+</html>
